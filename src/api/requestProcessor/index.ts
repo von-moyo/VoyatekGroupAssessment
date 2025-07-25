@@ -1,8 +1,6 @@
 import axios from "axios";
 import type { AxiosRequestConfig, InternalAxiosRequestConfig } from "axios";
 import Cookies from 'js-cookie';
-import { toast } from "sonner";
-import { refreshTokenService } from "../services";
 
 // Create axios instances
 const axiosInstance = axios.create({
@@ -27,55 +25,6 @@ axiosInstance.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 );
-
-// Refresh access token if token has expired
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-    if (
-      error?.response?.status === 401 &&
-      !originalRequest._retry &&
-      window.location.pathname !== "/"
-    ) {
-      originalRequest._retry = true;
-      const accessToken = await refreshToken();
-      if (accessToken) {
-        return axiosInstance(originalRequest);
-      }
-    }
-    return Promise.reject(error);
-  }
-);
-
-export const refreshToken = async (): Promise<string> => {
-  let token = "";
-
-  const refresh_token = Cookies.get('refresh_token');
-  if (refresh_token) {
-    await refreshTokenService({
-      refresh_token: refresh_token
-    })
-      .then((res: { data: { access_token: string; }; }) => {
-        token = res.data.access_token;
-        Cookies.set("access_token", token, {
-          path: "/",
-          secure: false,
-          sameSite: "Lax",
-          expires: 7,
-        });
-        axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-        return token;
-      })
-      .catch(() => {
-        Logout();
-      });
-
-  } else {
-    // Logout();
-  }
-  return token;
-};
 
 // API Request Functions
 interface ApiRequestProps {
@@ -104,16 +53,3 @@ export async function patchRequest(request: ApiRequestProps) {
 export async function deleteRequest(request: ApiRequestProps) {
   return await axiosInstance.delete(request.url, request.config);
 }
-
-// Logout Function
-
-const Logout = async (): Promise<string> =>  {
-    // make logout request
-    window.location.assign('/login');
-    localStorage.clear();
-    Cookies.remove('access_token');
-    Cookies.remove('refresh_token');
-    toast.info('Your session has expired, Please log in again.')
-
-    return 'logout successful'
-};

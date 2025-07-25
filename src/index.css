@@ -10,7 +10,7 @@
 @custom-variant dark (&:is(.dark *)); 
 
 body {
-  font-family: "Avenir", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .scrollbar-none {
@@ -168,3 +168,6 @@ body {
   filter: brightness(0.98);
 }
 
+* {
+  /* border: 1px solid; */
+}

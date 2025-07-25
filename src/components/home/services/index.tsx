@@ -1,11 +1,7 @@
 import React from 'react';
-import { Hexagon } from '../../hexagon';
-import { CentralCommandSection } from '../central-command';
-import { useMobile } from '../../../hooks/useMobile';
 import { motion } from 'framer-motion';
 
 const AdvisoryServices: React.FC = () => {
-  const { isMobile } = useMobile({ size: 1024 });
   const tealServices = [
     'Virtual CISO Services',
     'Security Risk Assessment Services',
@@ -115,60 +111,6 @@ const AdvisoryServices: React.FC = () => {
           </div>
         </div>
       </div>
-      <section className="pb-20 shadow-lg z-[99]"
-        style={{
-          backgroundImage: isMobile ? undefined : `url('https://fortifiedhealthsecurity.com/wp-content/themes/fortifiedhealthsecurity/assets/images/pattern-hd.png')`,
-          backgroundPosition: 'left -250px top -200px',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          boxShadow: 'inset 0 40px 30px -30px rgba(0, 0, 0, 0.3)',
-        }}
-      >
-        <div className='lg:grid hidden grid-cols-2 -mt-14'>
-          <div>
-            <div className="flex flex-wrap items-center max-w-4xl">
-              {tealServices.slice(0, 4).map((service, index) => (
-                <div key={index} className="col-span-1 flex justify-center">
-                  <Hexagon
-                    subpage={{ label: service, href: '' }} service={{ hexColor: 'green' }}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className='flex flex-wrap items-center ml-16 -mt-12'>
-              {tealServices.slice(4).map((service, index) => (
-                <div key={index + 4} className="col-span-1 flex justify-center">
-                  <Hexagon
-                    subpage={{ label: service, href: '' }} service={{ hexColor: 'green' }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="flex flex-wrap items-center max-w-4xl">
-              {blueServices.slice(0, 4).map((service, index) => (
-                <div key={index} className="col-span-1 flex justify-center">
-                  <Hexagon
-                    subpage={{ label: service, href: '' }} service={{ hexColor: 'blue' }}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className='flex flex-wrap items-center ml-16 -mt-12'>
-              {blueServices.slice(4).map((service, index) => (
-                <div key={index + 4} className="col-span-1 flex justify-center">
-                  <Hexagon
-                    subpage={{ label: service, href: '' }} service={{ hexColor: 'blue' }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <CentralCommandSection />
-
-      </section>
     </div >
   );
 };

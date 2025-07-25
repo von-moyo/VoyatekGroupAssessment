@@ -1,32 +1,45 @@
-import { LayoutDashboard, Users, Calendar } from "lucide-react";
+import { ActivitiesIcon, AeroplaneIcon, HotelIcon, MedicalBoxIcon, ScholarIcon, TravellingBagIcon, VacationIcon, VisaIcon } from "../assets/icons";
 
-export const adminNavLinks = [
-  {
-    name: "Dashboard",
-    href: "/",
-    icon: LayoutDashboard,
-  },
-  {
-    name: "Staff Management",
-    href: "/staff-management",
-    icon: Users,
-  },
-  {
-    name: "Birthday Calendar",
-    href: "/calendar",
-    icon: Calendar,
-  },
-];
 
-export const guestNavLinks = [
+export const navLinks = [
   {
-    name: "Dashboard",
-    href: "/",
-    icon: LayoutDashboard,
+    name: "Activities",
+    href: "/activities",
+    icon: ActivitiesIcon,
   },
   {
-    name: "Birthday Calendar",
-    href: "/calendar",
-    icon: Calendar,
+    name: "Hotels",
+    href: "/hotels",
+    icon: HotelIcon,
+  },
+  {
+    name: "Flights",
+    href: "/flights",
+    icon: AeroplaneIcon,
+  },
+  {
+    name: "Study",
+    href: "/study",
+    icon: ScholarIcon,
+  },
+  {
+    name: "Visa",
+    href: "/visa",
+    icon: VisaIcon,
+  },
+  {
+    name: "Immigration",
+    href: "/immigration",
+    icon: TravellingBagIcon,
+  },
+  {
+    name: "Medical",
+    href: "/medical",
+    icon: MedicalBoxIcon,
+  },
+  {
+    name: "Vacation Packages",
+    href: "/vacation-packages",
+    icon: VacationIcon,
   },
 ];

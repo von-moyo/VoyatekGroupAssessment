@@ -1,6 +1,9 @@
-import loginBg from './login-bg.png'
 import NoPfp from "./no-pfp.png";
-import Pfp from "./pfp.jpeg";
-import LogoIcon from "./qorwyn-logo.png";
+import Pfp from "./pfp.png";
+import Pfp2 from "./pfp-2.png";
+import Logo from "./logo.png";
+import Banner from "./banner.png";
+import Hotel from "./hotel.png";
+import Activity from "./activity.png";
 
-export { loginBg, NoPfp, Pfp, LogoIcon }
+export { NoPfp, Pfp, Pfp2, Logo, Banner, Hotel, Activity }
